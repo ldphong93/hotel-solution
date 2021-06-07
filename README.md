@@ -1,8 +1,14 @@
-# hotel-solution
+# Hotel Solution
 This is the compact version of hotel solution
+
 Services include:
-_ api-gateway
-_ authen-service
-_ guest-service
-_ hotel-service
-_ reservation-service
+
+_ API Gateway
+
+_ Authentication Service
+
+_ Guest Service
+
+_ Hotel Service
+
+_ Reservation Service
