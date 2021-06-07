@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
-	<artifactId>hotel-all-module</artifactId>
+	<artifactId>hotel-solution</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hotel-all-module</name>
-	<description>Demo project for Spring Boot</description>
+	<name>hotel-solution</name>
+	<description>Project of hotel solution - DBS Incubator</description>
 	<packaging>pom</packaging>
 
 	<parent>
