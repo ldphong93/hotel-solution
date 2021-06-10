@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/manage-guest")
+@RequestMapping("/api/guestAxon")
 public class ManageGuestController {
 
   private final QueryGateway queryGateway;
@@ -26,7 +26,8 @@ public class ManageGuestController {
     Guest guest = queryGateway.query(new FindGuestByIdQuery(id), Guest.class).join();
 
     if (guest == null) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(Guest.builder().name("Guest Profile not found").build(),
+          HttpStatus.NOT_FOUND);
     }
     return new ResponseEntity<>(guest, HttpStatus.OK);
   }

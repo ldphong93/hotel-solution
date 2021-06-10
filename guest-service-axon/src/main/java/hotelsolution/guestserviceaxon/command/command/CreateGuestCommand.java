@@ -1,10 +1,9 @@
 package hotelsolution.guestserviceaxon.command.command;
 
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
+//@Builder
 public class CreateGuestCommand extends BaseCommand<String> {
 
   private final String userName;
