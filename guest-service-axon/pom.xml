@@ -71,18 +71,19 @@
 		<dependency>
 			<groupId>org.axonframework</groupId>
 			<artifactId>axon-spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.axonframework</groupId>
-					<artifactId>axon-server-connector</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>3.4</version>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.axonframework</groupId>-->
+<!--					<artifactId>axon-server-connector</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
 		</dependency>
-		<dependency>
-			<groupId>org.axonframework</groupId>
-			<artifactId>axon-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.axonframework</groupId>-->
+<!--			<artifactId>axon-test</artifactId>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<dependencyManagement>

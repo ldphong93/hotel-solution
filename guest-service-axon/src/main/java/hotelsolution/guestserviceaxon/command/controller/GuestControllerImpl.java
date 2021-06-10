@@ -51,7 +51,7 @@ public class GuestControllerImpl {
   }
 
   @DeleteMapping
-  public ResponseEntity<String> deleteGuest(@Valid String id) {
+  public ResponseEntity<String> deleteGuest(String id) {
     try {
       CompletableFuture<String> response = guestCommandService.deleteGuest(id);
 
