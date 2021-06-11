@@ -42,6 +42,7 @@
 		<module>guest-service-axon</module>
 		<module>hotel-service</module>
 		<module>reservation-service</module>
+		<module>reservation-service-saga</module>
 	</modules>
 
 	<repositories>
