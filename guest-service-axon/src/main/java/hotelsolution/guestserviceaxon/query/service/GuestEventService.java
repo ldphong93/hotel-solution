@@ -13,24 +13,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j(topic = "[MangeGuestService]")
-public class MangeGuestService {
+public class GuestEventService {
 
   private final GuestRepository guestRepository;
 
-  public MangeGuestService(GuestRepository guestRepository) {
+  public GuestEventService(GuestRepository guestRepository) {
     this.guestRepository = guestRepository;
   }
 
   @EventHandler
-  public void on(GuestCreatedEvent guestCreatedEvent) {
+  public void on(GuestCreatedEvent event) {
     log.info("Handling GuestCreatedEvent.");
-
     guestRepository.save(Guest.builder()
-        .id(guestCreatedEvent.getId())
-        .userName(guestCreatedEvent.getUserName())
-        .password(guestCreatedEvent.getPassword())
-        .name(guestCreatedEvent.getName())
-        .phoneNumber(guestCreatedEvent.getPhoneNumber())
+        .id(event.getId())
+        .userName(event.getUserName())
+        .password(event.getPassword())
+        .name(event.getName())
+        .phoneNumber(event.getPhoneNumber())
         .build());
   }
 

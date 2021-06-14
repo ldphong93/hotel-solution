@@ -7,10 +7,12 @@ import hotelsolution.guestserviceaxon.command.dto.GuestCreateRequest;
 import hotelsolution.guestserviceaxon.command.dto.GuestEditRequest;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j(topic = "[GuestCommandService]")
 public class GuestCommandService {
 
   private final CommandGateway commandGateway;
@@ -20,6 +22,7 @@ public class GuestCommandService {
   }
 
   public CompletableFuture<String> createGuest(GuestCreateRequest request) {
+    log.info("CreateGuest command received.");
     return commandGateway
         .send(new CreateGuestCommand(UUID.randomUUID().toString(), request.getUserName(),
             request.getPassword(), request.getName(), request.getPhoneNumber()));

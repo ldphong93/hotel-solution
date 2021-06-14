@@ -28,28 +28,28 @@ public class GuestAggregate {
   }
 
   @CommandHandler
-  public GuestAggregate(CreateGuestCommand createGuestCommand) {
+  public GuestAggregate(CreateGuestCommand command) {
     log.info("CreateGuestCommand received.");
     AggregateLifecycle.apply(new GuestCreatedEvent(
-        createGuestCommand.getId(),
-        createGuestCommand.getUserName(),
-        createGuestCommand.getPassword(),
-        createGuestCommand.getName(),
-        createGuestCommand.getPhoneNumber()));
+        command.getId(),
+        command.getUserName(),
+        command.getPassword(),
+        command.getName(),
+        command.getPhoneNumber()));
   }
 
   @EventSourcingHandler
-  public void on(GuestCreatedEvent guestCreatedEvent) {
+  public void on(GuestCreatedEvent event) {
     log.info("An GuestCreatedEvent occurred.");
-    this.id = guestCreatedEvent.getId();
-    this.userName = guestCreatedEvent.getUserName();
-    this.password = guestCreatedEvent.getPassword();
-    this.name = guestCreatedEvent.getName();
-    this.phoneNumber = guestCreatedEvent.getPhoneNumber();
+    this.id = event.getId();
+    this.userName = event.getUserName();
+    this.password = event.getPassword();
+    this.name = event.getName();
+    this.phoneNumber = event.getPhoneNumber();
   }
 
   @CommandHandler
-  public GuestAggregate(EditGuestCommand editGuestCommand) {
+  public void on(EditGuestCommand editGuestCommand) {
     log.info("EditGuestCommand received.");
     AggregateLifecycle.apply(new GuestEditedEvent(
         editGuestCommand.getId(),
@@ -66,7 +66,7 @@ public class GuestAggregate {
   }
 
   @CommandHandler
-  public GuestAggregate(DeleteGuestCommand deleteGuestCommand) {
+  public void on(DeleteGuestCommand deleteGuestCommand) {
     log.info("DeleteGuestCommand received.");
     AggregateLifecycle.apply(new GuestDeletedEvent(deleteGuestCommand.getId()));
   }
