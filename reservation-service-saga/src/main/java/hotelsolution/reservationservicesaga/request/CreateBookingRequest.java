@@ -6,8 +6,6 @@ import lombok.Data;
 public class CreateBookingRequest {
 
   private String hotelId;
-
   private String guestId;
-
   private String roomId;
 }
