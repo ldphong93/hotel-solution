@@ -39,8 +39,11 @@
 		<module>api-gateway</module>
 		<module>authen-service</module>
 		<module>guest-service</module>
+		<module>guest-service-axon</module>
 		<module>hotel-service</module>
 		<module>reservation-service</module>
+		<module>reservation-service-saga</module>
+		<module>payment-service</module>
 	</modules>
 
 	<repositories>

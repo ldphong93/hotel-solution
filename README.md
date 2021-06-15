@@ -9,6 +9,12 @@ _ Authentication Service
 
 _ Guest Service
 
+_ Guest Service using Axon framework
+
 _ Hotel Service
 
+_ Payment Service
+
 _ Reservation Service
+
+_ Reservation Service using Saga
