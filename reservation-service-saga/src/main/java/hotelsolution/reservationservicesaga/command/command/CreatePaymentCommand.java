@@ -9,6 +9,10 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class CreatePaymentCommand {
 
   @TargetAggregateIdentifier
-  private final String paymentId;
-  private final String bookingId;
+  private String bookingId;
+
+  private String paymentId;
+
+
+
 }

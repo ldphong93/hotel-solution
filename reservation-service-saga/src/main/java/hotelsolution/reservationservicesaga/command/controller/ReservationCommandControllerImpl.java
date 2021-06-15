@@ -22,7 +22,7 @@ public class ReservationCommandControllerImpl implements ReservationCommandContr
   @Override
   public CompletableFuture<String> createBooking(CreateBookingRequest request) {
 
-    log.info("Create reservation");
+    log.info("Create booking request received");
     return reservationCommandService.createBooking(request);
   }
 

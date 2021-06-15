@@ -43,6 +43,7 @@
 		<module>hotel-service</module>
 		<module>reservation-service</module>
 		<module>reservation-service-saga</module>
+		<module>payment-service</module>
 	</modules>
 
 	<repositories>

@@ -7,6 +7,8 @@ import lombok.Getter;
 @Getter
 public class CreatePaymentEvent {
 
-  private String paymentId;
   private String bookingId;
+  private String paymentId;
+  private String paidId;
+
 }

@@ -1,4 +1,4 @@
-package hotelsolution.reservationservicesaga.request;
+package hotelsolution.paymentservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentRequest {
+public class PaymentInvoice {
 
+  private String paidId;
   private String bookingId;
   private String paymentId;
 }

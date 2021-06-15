@@ -24,6 +24,7 @@ public class ReservationCommandServiceImpl implements ReservationCommandService 
 
   @Override
   public CompletableFuture<String> createBooking(CreateBookingRequest request) {
+    log.info("CreateBookingRequest received.");
 
     return commandGateway.send(
         new CreateBookingCommand(UUID.randomUUID().toString(), request.getHotelId(),

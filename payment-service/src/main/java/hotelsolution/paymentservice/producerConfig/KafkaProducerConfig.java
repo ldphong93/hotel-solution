@@ -1,6 +1,6 @@
-package hotelsolution.reservationservicesaga.config;
+package hotelsolution.paymentservice.producerConfig;
 
-import hotelsolution.reservationservicesaga.request.PaymentRequest;
+import hotelsolution.paymentservice.model.PaymentInvoice;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -18,7 +18,7 @@ public class KafkaProducerConfig {
   private final String bootstrapAddress = "localhost:29092";
 
   @Bean
-  public ProducerFactory<String, PaymentRequest> paymentProducerFactory() {
+  public ProducerFactory<String, PaymentInvoice> paymentInvoiceFactory() {
     Map<String, Object> configProps = new HashMap<>();
     configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
     configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -27,8 +27,8 @@ public class KafkaProducerConfig {
   }
 
   @Bean
-  public KafkaTemplate<String, PaymentRequest> paymentKafkaTemplate() {
-    return new KafkaTemplate<>(paymentProducerFactory());
+  public KafkaTemplate<String, PaymentInvoice> paymentKafkaTemplate() {
+    return new KafkaTemplate<>(paymentInvoiceFactory());
   }
 
 

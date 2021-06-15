@@ -1,4 +1,4 @@
-package hotelsolution.reservationservicesaga.config;
+package hotelsolution.paymentservice.producerConfig;
 
 
 import java.util.HashMap;
@@ -24,6 +24,6 @@ public class KafkaTopicConfig {
 
   @Bean
   public NewTopic topic1() {
-    return new NewTopic("payTopic", 1, REPLICATION_FACTOR);
+    return new NewTopic("invoiceTopic", 1, REPLICATION_FACTOR);
   }
 }
