@@ -2,7 +2,7 @@ package hotelsolution.reservationservicesaga.saga;
 
 import hotelsolution.reservationservicesaga.command.command.CreatePaymentCommand;
 import hotelsolution.reservationservicesaga.event.CreateBookingEvent;
-import hotelsolution.reservationservicesaga.event.CreatePaymentEvent;
+import hotelsolution.reservationservicesaga.event.CreateReserveEvent;
 import java.util.UUID;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +39,7 @@ public class BookingManagementSaga {
   }
 
   @SagaEventHandler(associationProperty = "bookingId")
-  public void handle(CreatePaymentEvent event) {
+  public void handle(CreateReserveEvent event) {
     log.info("Saga continue.");
 
     //associate saga

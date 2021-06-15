@@ -2,12 +2,11 @@ package hotelsolution.reservationservicesaga.command.aggregate;
 
 import hotelsolution.reservationservicesaga.command.command.CreateBookingCommand;
 import hotelsolution.reservationservicesaga.command.command.CreatePaymentCommand;
+import hotelsolution.reservationservicesaga.command.command.CreateReserveCommand;
 import hotelsolution.reservationservicesaga.enums.BookingStatus;
 import hotelsolution.reservationservicesaga.event.CreateBookingEvent;
-import hotelsolution.reservationservicesaga.event.CreatePaymentEvent;
-import hotelsolution.reservationservicesaga.request.PaymentInvoice;
+import hotelsolution.reservationservicesaga.event.CreateReserveEvent;
 import hotelsolution.reservationservicesaga.request.PaymentRequest;
-import java.util.concurrent.CountDownLatch;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -15,7 +14,6 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
@@ -32,7 +30,6 @@ public class BookingAggregate {
   private String roomId;
   private BookingStatus bookingStatus;
 
-  private CountDownLatch countDownLatch = new CountDownLatch(1);
 
   @Autowired
   private KafkaTemplate<String, PaymentRequest> template;
@@ -84,20 +81,19 @@ public class BookingAggregate {
     template.send(message);
   }
 
-  @KafkaListener(topics = "invoiceTopic", containerFactory = "paymentKafkaListenerContainerFactory")
-  public void invoiceListener(PaymentInvoice invoice) {
-    log.info("Received payment invoice [{}]", invoice.toString());
-    this.countDownLatch.countDown();
 
-    AggregateLifecycle.apply(new CreatePaymentEvent(
-        invoice.getBookingId(),
-        invoice.getPaymentId(),
-        invoice.getPaidId()));
+  @CommandHandler
+  public void on(CreateReserveCommand command) {
+    log.info("CreateReserveCommand received.");
+    AggregateLifecycle.apply(new CreateReserveEvent(
+        command.getBookingId(),
+        command.getPaymentId(),
+        command.getPaidId()));
   }
 
   @EventSourcingHandler
-  public void on(CreatePaymentEvent event) {
-    log.info("An CreatePaymentEvent occurred.");
+  public void on(CreateReserveEvent event) {
+    log.info("An CreateReserveEvent occurred.");
     this.bookingId = event.getBookingId();
   }
 }
