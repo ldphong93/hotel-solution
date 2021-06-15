@@ -10,8 +10,6 @@ public class CreateReserveCommand {
 
   @TargetAggregateIdentifier
   private String bookingId;
-
   private String paymentId;
-
   private String paidId;
 }

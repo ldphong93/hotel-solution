@@ -62,23 +62,17 @@ public class BookingAggregate {
   @CommandHandler
   public void on(CreatePaymentCommand command) {
     log.info("CreatePaymentCommand received.");
-/*    AggregateLifecycle.apply(new CreateBookingEvent(
-        command.getBookingId(),
-        command.getHotelId(),
-        command.getGuestId(),
-        command.getRoomId(),
-        command.getBookingStatus()));*/
 
     PaymentRequest paymentRequest = PaymentRequest.builder()
         .bookingId(command.getBookingId())
         .paymentId(command.getPaymentId())
         .build();
-
     Message<PaymentRequest> message = MessageBuilder
         .withPayload(paymentRequest)
         .setHeader(KafkaHeaders.TOPIC, topicName)
         .build();
     template.send(message);
+    log.info("Payment request sent to payment service.");
   }
 
 

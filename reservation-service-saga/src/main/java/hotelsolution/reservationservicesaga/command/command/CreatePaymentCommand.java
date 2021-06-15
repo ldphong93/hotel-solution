@@ -10,7 +10,6 @@ public class CreatePaymentCommand {
 
   @TargetAggregateIdentifier
   private String bookingId;
-
   private String paymentId;
 
 

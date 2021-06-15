@@ -19,7 +19,7 @@ public class MockPaymentService {
   private KafkaTemplate<String, PaymentInvoice> template;
 
   public void doPayment(String bookingId, String paymentId) {
-    log.info("Payment proceeded");
+    log.info("Payment proceeding...");
 
     PaymentInvoice invoice = PaymentInvoice.builder()
         .bookingId(bookingId)
@@ -32,5 +32,6 @@ public class MockPaymentService {
         .setHeader(KafkaHeaders.TOPIC,TOPIC_NAME )
         .build();
     template.send(message);
+    log.info("Invoice sent to client.");
   }
 }

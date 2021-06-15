@@ -18,9 +18,6 @@ public class BookingManagementSaga {
 
   @Inject
   private transient CommandGateway commandGateway;
-/*
-  @Autowired
-  private CommandGateway commandGateway;*/
 
   @StartSaga
   @SagaEventHandler(associationProperty = "bookingId")
