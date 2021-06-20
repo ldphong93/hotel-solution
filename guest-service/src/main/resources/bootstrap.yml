@@ -5,7 +5,5 @@ spring:
       label: main
   application:
     name: guest-service
-  profiles:
-    active: default
-
-
+#  profiles:
+#    active: local
