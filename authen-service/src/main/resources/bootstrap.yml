@@ -1,11 +1,7 @@
 spring:
   cloud:
     config:
-      uri: http://localhost:8888
-      username: admin-phong
-      password: pass-phong
-  config:
-    activate:
-      on-profile: security
+      uri: http://localhost:8889
+      label: main
   application:
     name: authentication-service

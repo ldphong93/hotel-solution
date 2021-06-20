@@ -14,7 +14,7 @@ spring:
           predicates:
             - Path=/api/guest/**
           filters:
-            - CustomFilter1
+          #           - CustomFilter1
 
         - id: hotel-service
           uri: lb://HOTEL-SERVICE
